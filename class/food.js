@@ -1,3 +1,6 @@
-// Create an edible `Food` class that inherits from the `Item` class
-
-// Your code here
+const { Item } = require('./item');
+class Food extends Item {
+}
+module.exports = {
+    Food,
+};
