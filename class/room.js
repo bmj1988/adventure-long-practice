@@ -45,7 +45,7 @@ class Room {
 
     getItemByName(name) {
         // Retrieves an item from a room by item name
-
+        return this.items.find(item => item.name === name)
         // Your code here
     }
 

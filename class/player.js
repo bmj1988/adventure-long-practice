@@ -35,13 +35,31 @@ class Player {
 
     takeItem(itemName) {
         // Picks up an item from the current room into the player's inventory
-
+        let item = this.currentRoom.getItemByName(itemName)
+        let index = this.currentRoom.items.indexOf(item)
+        if (item) {
+            this.items.push(item)
+            this.currentRoom.items.splice(index, 1)
+        }
+        else {
+            return console.log(`There is no ${itemName} in this room!`)
+        }
+        return console.log(`You pick up ${itemName}!`)
         // Your code here
     }
 
     dropItem(itemName) {
         // Drops an item the player is holding into their current room
-
+        let item = this.getItemByName(itemName)
+        let index = this.items.indexOf(item)
+        if (item) {
+            this.currentRoom.items.push(item)
+            this.items.splice(index, 1)
+        }
+        else {
+            return console.log(`${itemName} is not in your inventory!`)
+        }
+        return console.log(`${itemName} has been dropped!`)
         // Your code here
     }
 
@@ -52,9 +70,7 @@ class Player {
     }
 
     getItemByName(name) {
-        // Retrieves an item from a player's inventory by item name
-
-        // Your code here
+        return this.items.find(item => item.name === name)
     }
 }
 
